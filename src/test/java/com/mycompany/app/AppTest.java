@@ -27,10 +27,16 @@ public class AppTest {
   public void shouldAnswerWithTrue() {
     for (int j = 0; j < size; j++) {
       map.put(j, new BigInteger(130, random).toString(32) + Foo.s);
+      if (j % 1000 == 0) {
+        printHeap();
+      }
     }
+    printHeap();
+    assertTrue(true);
+  }
+
+  private static void printHeap() {
     long heapSize = Runtime.getRuntime().totalMemory();
     System.out.println(String.format(">>> heap size: %s mb", heapSize * 1.0 / 1024 / 1024));
-
-    assertTrue(true);
   }
 }
